@@ -14,14 +14,14 @@ int main(void)
     while (std::cin >> num && ++len)
         vec.push_back(num);
     int sum{};
-    for (auto cur : vec)
+    /*for (auto cur : vec)
         sum += cur;
-    std::cout << "The sum of each pair is: " << sum << std::endl;
+    std::cout << "The sum of each pair is: " << sum << std::endl;*/
     sum = 0;
-    auto len_c = len;
+    auto len_c = static_cast<size_t>(len);
+    std::cout << "===========\n";
     for (size_t i{}; i < len; ++i)
-        sum += vec[i] + vec[--len_c];
-    std::cout << "Second: " << sum << std::endl;
-    
+        std::cout << vec[i] + vec[--len] << std::endl;
+
     return 0;
 }
