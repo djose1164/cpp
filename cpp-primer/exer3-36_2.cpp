@@ -6,22 +6,15 @@ similar program to compare two vectors.
 #include <iostream>
 #include <vector>
 
+//bool compare(
+
 int main(void)
 {
 	constexpr unsigned len = 4;
 	std::vector<unsigned> vec{2, 4, 6, 8};
-	std::vector<unsigned> vec2{2, 4, 6, 8};
-	bool flag{true};
+	std::vector<unsigned> vec2{1, 4, 6, 8};
 	
-	for (size_t i{0}; i < len; ++i)
-	{
-		if (vec[i] != vec2[i])
-		{
-			flag = false;
-			break;
-		}
-	}
-	if (flag)
+	if (vec == vec2)
 		std::cout << "Vectors are equals!\n";
 	else
 		std::cout << "Vectors are different!\n";
