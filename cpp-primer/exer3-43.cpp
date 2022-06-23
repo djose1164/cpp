@@ -26,4 +26,6 @@ int main(void)
 	for (size_t i = 0; i < (std::end(ia) - std::begin(ia)); ++i)
 		std::cout << *(ia + i) << " ";
 	std::cout << std::endl;
+	
+	return 0;
 }
