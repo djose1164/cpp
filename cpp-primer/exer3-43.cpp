@@ -10,22 +10,33 @@ do not use a type alias, auto, or decltype to simplify the code.
 
 int main(void)
 {
-	int ia[]{-5, 10, 2, 0, 1};
+	int ia[3][4] = {{0, 1, 2, 3},
+                    {4, 5, 6, 7},
+                    {8, 9, 10, 11}};
 	
 	// With for-range.
-	for (int& i: ia)
-		std::cout << i << " ";
+	for (int (&p)[4]: ia)
+	{
+		for (int& q: p)
+			std::cout << q << " ";
+	}
 	std::cout << "\n=======" << std::endl;
-	
+
 	// Using subscripts.
-	for (size_t i = 0; i < (std::end(ia) - std::begin(ia)); ++i)
-		std::cout << ia[i] << " ";
-	std::cout << "\n=======" << std::endl;
+	for (size_t i = 0; i < 3; ++i)
+	{
+		for (size_t j = 0; j < 4; ++j) 	
+			std::cout << ia[i][j];
+		std::cout << std::endl;
+	}
+	std::cout << "=======" << std::endl;
 	
 	// Using pointers.
-	for (size_t i = 0; i < (std::end(ia) - std::begin(ia)); ++i)
-		std::cout << *(ia + i) << " ";
+	for (int (*p)[4] = ia; p != ia + 3; ++p)
+	{
+		for (int *q = *p; q != *p + 4; ++q)
+		std::cout << *q << ' ';
 	std::cout << std::endl;
-	
+	}
 	return 0;
 }
